@@ -5,7 +5,6 @@ import time
 from sklearn.neighbors import KNeighborsClassifier
 
 if __name__ == "__main__":
-    srcdir ='WindowsGreyImage'
     train_dataset = CustomImageDataset(annotations_file=r'annotations_train_2_50.1.csv',
                                        weights_file=r'class_weights_2_50.1.csv', img_dir=r'tifs_grey_image',
                                        transform=None)

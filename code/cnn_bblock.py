@@ -33,9 +33,6 @@ class cnn_bblock(nn.Module):
         return self.net(X)
 
 
-#num_classes = 42
-#model = VGG_11(arch=((1, 64), (1, 128), (2, 256), (2, 512), (2, 512)), num_classes=num_classes).layer_summary((1, 3, 1024, 72))
-
 if __name__ == "__main__":
     # Example usage:
     # Define your model, dataloaders, criterion, optimizer, and device
@@ -65,7 +62,7 @@ if __name__ == "__main__":
     # Instantiate the Trainer class
     trainer = Trainer(model, train_loader, test_loader, cost, optimizer, device)
     # Train the model for a specified number of epochs
-    trainer.train(num_epochs=1)
+    trainer.train(num_epochs=100)
 
     start_time = time.time()
     # Evaluate the model on the test set
