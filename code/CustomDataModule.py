@@ -41,16 +41,4 @@ class CustomDataModule:
        return self.test_loader
 
 
-"""
-new_height = 512
-new_width = 472
-batch_size = 32
-transforms = transforms.Compose([
-        transforms.Resize((new_height, new_width)),
-        transforms.ToTensor()])
-p1 = CustomDataModule(batch_size, transforms)
 
-print(p1.get_train_loader())
-print(p1.get_test_loader())
-
-"""

@@ -1,4 +1,3 @@
-
 from CustomDataModule import *
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 import csv
@@ -49,13 +48,12 @@ class Trainer:
 
         with torch.no_grad():
             for inputs, labels in self.test_loader:
-                #print("shape", inputs.shape)
                 inputs = inputs.float()
                 if self.device:
                    inputs, labels = inputs.to(self.device), labels.to(self.device)
 
                 outputs = self.model(inputs)
-                #print(outputs[0])
+
                 _, predicted = torch.max(outputs, 1)
                 correct_predictions += (predicted == labels).sum().item()
                 total_samples += labels.size(0)
@@ -71,34 +69,11 @@ class Trainer:
             recall = recall_score(all_labels, all_predictions, average=None, zero_division=0)
             f1 = f1_score(all_labels, all_predictions, average='weighted', zero_division=0)
 
-            #classes = sorted(set(all_labels))
-            #conf_matrix = confusion_matrix(all_labels, all_predictions, labels=classes)
-            # Print results for each class
-            #for i, cls in enumerate(classes):
-            #    print(f"Class: {cls}")
-            #    print(f"Precision: {precision[i]}")
-            #    print(f"Recall: {recall[i]}")
-            #    print(f"F1 Score: {f1[i]}")
-           #     print(f"Confusion Matrix: {conf_matrix[i]}")
-            #    print()
-
             print(accuracy)
             print("precision",precision)
             print("recall",recall)
             print("f1", f1)
 
-            # Path to the CSV file
-            #csv_file_path = "tifs_grey_image.csv"
-
-            # Open the CSV file in append mode ('a')
-            #with open(csv_file_path, mode='a', newline='') as file:
-            #    writer = csv.writer(file)
-
-                # Write the list as a row in the CSV file
-            #    writer.writerow([precision, recall, f1, accuracy])
-
-            # Define the file name for the CSV
-            csv_filename = "metrics_per_class.csv"
             conf_matrix = confusion_matrix(all_labels, all_predictions)
             # Calculate true positives (TP) for each class
             TP = conf_matrix.diagonal()
@@ -112,11 +87,11 @@ class Trainer:
             #print(conf_matrix)
             output_file_path =r'conf_matrix_ase_dataset.csv'
             # Write the data to the CSV file
-            '''
+
             with open(output_file_path, 'w', newline='') as csv_file:
                 writer = csv.writer(csv_file)
                 writer.writerows(conf_matrix)
-            '''
+
         return correct_predictions / total_samples
 
     def train(self, num_epochs):
@@ -125,9 +100,9 @@ class Trainer:
 
             print(f"Epoch {epoch + 1}/{num_epochs} -> "
                   f"Train Loss: {train_loss:.4f}, Train Accuracy: {train_accuracy:.4f}  ")
-            if epoch > 10:
-                modelname =("./clahecolor_malimg_finer_maps_models/")+"img_malfiner_" + str(epoch) + ".pth"
-                torch.save(self.model.state_dict(), modelname)
+
+        modelname =("./models/")+"img_malfiner_" + ".pth"
+        torch.save(self.model.state_dict(), modelname)
         print("Training completed.")
 
 
