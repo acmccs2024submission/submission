@@ -450,7 +450,7 @@ def androiddataset():
      create our dataset for classification
      :return:
      '''
-    directory = r'../androidreports'
+    directory = r'../ase_dataset.json'
     listMalware = combine(directory)
     top_n = 2
     malware_family = r"androidfam_topn.csv"
@@ -476,41 +476,12 @@ def backtoorigin():
     rollback(com_fam_dir, filtered_dir, out_mal_class, in_mal_dir)
 
 
-def backtooriginlinux():
-    '''
-    collect all malware back to the original folder
-    :return:
-    '''
-    com_fam_dir = r'./com_fam_dir_linux'
-    filtered_dir = r'../LinuxFilter'
-    out_mal_class = r'../LinuxFamily'
-    in_mal_dir = r'../LinuxMalware'
-    rollback(com_fam_dir, filtered_dir, out_mal_class, in_mal_dir)
 
-
-def backtooriginandroid():
-    '''
-    collect all malware back to the original folder
-    :return:
-    '''
-    com_fam_dir = r'./com_fam_dir_android'
-    filtered_dir = r'../AndroidFilter'
-    out_mal_class = r'../AndroidFamily'
-    in_mal_dir = r'../AndroidMalware'
-    rollback(com_fam_dir, filtered_dir, out_mal_class, in_mal_dir)
 
 #dataset()
 backtoorigin()
 
-#linuxdataset()
-#backtooriginlinux()
-#androiddataset()
 
-#move_files_from_subfolders(r'../AndroidMalware', r'../AndroidMalware')
-
-#print(similarity_rate(r'gen', 'generic'))
-
-#print(similarity_rate(r'ransom', 'ransomgen'))
 
 
 
