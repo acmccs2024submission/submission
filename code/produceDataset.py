@@ -145,8 +145,8 @@ def replace_combine_similar_strings(dict, filtereddir, threshold=1.0):
                         # change the number of samples and move the malware samples to sub families with shorter name
                         if len(keys[i][0]) <= len(keys[j][0]):
                             dict[keys[i]] = dict.pop(keys[j]) + dict[keys[i]]
-                            srcdirectory = filtereddir + '/' + '_'.join(keys[j])
-                            desdirectory = filtereddir + '/' + '_'.join(keys[i])
+                            srcdirectory = filtereddir + '/' + '.'.join(keys[j])
+                            desdirectory = filtereddir + '/' + '.'.join(keys[i])
                             move_files(srcdirectory, desdirectory)
                             try:
                                 # Use shutil.rmtree to delete the src directory as its samples have moved to the new directory
@@ -159,8 +159,8 @@ def replace_combine_similar_strings(dict, filtereddir, threshold=1.0):
 
                         else:
                             dict[keys[j]] = dict.pop(keys[i]) + dict[keys[j]]
-                            srcdirectory = filtereddir + '/' + '_'.join(keys[i])
-                            desdirectory = filtereddir + '/' + '_'.join(keys[j])
+                            srcdirectory = filtereddir + '/' + '.'.join(keys[i])
+                            desdirectory = filtereddir + '/' + '.'.join(keys[j])
                             move_files(srcdirectory, desdirectory)
                             try:
                                 #Use shutil.rmtree to delete the src directory as its samples have moved to the new directory
@@ -287,7 +287,7 @@ def countOccurAllByTopN(listMalware, top_n, malware_family, in_mal_dir, out_mal_
         move malware samples to their corresponding subfamilies
         '''
         malfilepath = in_mal_dir + '/' + listMalware[i]["name"]
-        out_mal_dir = out_mal_class + '/' + '_'.join(top_sub_family[-1])
+        out_mal_dir = out_mal_class + '/' + '.'.join(top_sub_family[-1])
         # print(outpath)
         if not os.path.exists(out_mal_dir):
             os.makedirs(out_mal_dir)
@@ -354,8 +354,8 @@ def classify(filtered_dict, srcdir, filtereddir, com_fam_dir =r'com_fam_dir', co
     #only move the filtered malware samples from source directory that includes all malware subfamilies to filtered directory
     #srcdir should the top directory, key is the malware subfamily name that we want to move
     for key, _ in filtered_dict.items():
-        srcpath = srcdir + '/' + '_'.join(key)
-        outpath = filtereddir + '/' + '_'.join(key)
+        srcpath = srcdir + '/' + '.'.join(key)
+        outpath = filtereddir + '/' + '.'.join(key)
         move_files(srcpath, outpath)
 
 
@@ -374,8 +374,8 @@ def classify(filtered_dict, srcdir, filtereddir, com_fam_dir =r'com_fam_dir', co
     common_family = filter_common_family(replaced_sorted_counts)
 
     for key, value in common_family.items():
-        srcpath = filtereddir + '/' + '_'.join(key)
-        despath = com_fam_dir + '/' +'_'.join(key)
+        srcpath = filtereddir + '/' + '.'.join(key)
+        despath = com_fam_dir + '/' +'.'.join(key)
         move_files(srcpath, despath)
 
     with open(com_familycsv, 'w', newline='') as csvfile:
