@@ -43,8 +43,6 @@ class VGG_11(nn.Module):
         """Defined in :numref:`sec_linear_concise`"""
         return self.net(X)
 
-#num_classes = 42
-#model = VGG_11(arch=((1, 64), (1, 128), (2, 256), (2, 512), (2, 512)), num_classes=num_classes).layer_summary((1, 3, 1024, 72))
 
 if __name__ == "__main__":
     # Example usage:
@@ -65,10 +63,6 @@ if __name__ == "__main__":
     datamodule = CustomTxtModule(batch_size=32, transform=transforms)
     train_loader = datamodule.get_train_loader()
     test_loader = datamodule.get_test_loader()
-
-    #for image, label in train_loader:
-    #    print(image.shape)
-    #    print(label.shape)
 
 
     cost = nn.CrossEntropyLoss()
