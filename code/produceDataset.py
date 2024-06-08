@@ -426,43 +426,6 @@ def dataset():
     replacedcsv = r'replacedwin.csv'
     classify(filtered_dict, srcdir, filtered_dir, com_fam_dir, com_familycsv, filtercsv, replacedcsv)
 
-def linuxdataset():
-        '''
-        create our dataset for classification
-        :return:
-        '''
-        directory = r'../linuxreports'
-        listMalware = combine(directory)
-        top_n = 2
-        malware_family = r"linuxfam_topn.csv"
-        in_mal_dir = r'../LinuxMalware'
-        out_mal_class = r'../LinuxFamily'
-        threshold = 1.0
-        filter_num = 35
-        filtered_dict = countOccurAllByTopN(listMalware, top_n, malware_family, in_mal_dir, out_mal_class, threshold,
-                                            filter_num)
-        srcdir = r'../LinuxFamily'
-        filtered_dir = r'../LinuxFilter'
-        classify(filtered_dict, srcdir, filtered_dir)
-
-def androiddataset():
-    '''
-     create our dataset for classification
-     :return:
-     '''
-    directory = r'../ase_dataset.json'
-    listMalware = combine(directory)
-    top_n = 2
-    malware_family = r"androidfam_topn.csv"
-    in_mal_dir = r'../AndroidMalware'
-    out_mal_class = r'../AndroidFamily'
-    threshold = 1.0
-    filter_num = 35
-    filtered_dict = countOccurAllByTopN(listMalware, top_n, malware_family, in_mal_dir, out_mal_class, threshold,
-                                        filter_num)
-    srcdir = r'../AndroidFamily'
-    filtered_dir = r'../AndroidFilter'
-    classify(filtered_dict, srcdir, filtered_dir)
 
 def backtoorigin():
     '''
