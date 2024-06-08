@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # Instantiate the Trainer class
     trainer = Trainer(model, train_loader, test_loader, cost, optimizer, device)
     # Train the model for a specified number of epochs
-    trainer.train(num_epochs=1)
+    trainer.train(num_epochs=100)
     start_time = time.time()
     # Evaluate the model on the test set
     test_accuracy = trainer.test()

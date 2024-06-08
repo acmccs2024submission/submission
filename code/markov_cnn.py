@@ -69,7 +69,7 @@ class CNN(nn.Module):
 if __name__ == "__main__":
     # Example usage:
     # Define your model, dataloaders, criterion, optimizer, and device
-    num_classes = 25
+    num_classes = 42
     model = CNN(num_classes=num_classes)
     new_height = 256
     new_width = 256
@@ -80,13 +80,11 @@ if __name__ == "__main__":
         transforms.ToTensor(),
     ]
     )
-    start_time = time.time()
+    #start_time = time.time()
 
     datamodule = CustomDataModule(batch_size=32, transform=transform)
 
-
-
-
+    '''
     for batch in datamodule.get_train_loader():
         # Apply the transformation to each batch of data
         for image in batch:
@@ -95,11 +93,10 @@ if __name__ == "__main__":
     end_time = time.time()
     execution_time = (end_time - start_time)
     print(execution_time/len(datamodule.get_train_loader().dataset))
-
     '''
+
     train_loader = datamodule.get_train_loader()
     test_loader = datamodule.get_test_loader()
-
 
     cost = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, )
@@ -119,4 +116,3 @@ if __name__ == "__main__":
     execution_time = (end_time - start_time) / (len(test_loader.dataset))
     print("Execution time per malware:", execution_time, "seconds")
     print(f"Test Accuracy: {test_accuracy:.4f}")
-'''
