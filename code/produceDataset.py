@@ -409,7 +409,7 @@ def dataset():
     :return:
     '''
 
-    vtreport = r'winreports.json'
+    vtreport = r'ase_dataset.json'
     listMalware = readreport(vtreport)
     top_n = 2
     malware_family = r"malfam_topn.csv"
