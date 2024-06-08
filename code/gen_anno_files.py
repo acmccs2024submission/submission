@@ -54,8 +54,6 @@ def annotation_file_train_test(image_dir, valid_size, random_seed=42):
         writer.writerow(['sample_probability'])
         writer.writerows(zip(weights))
 
-
-annotation_file_train_test(r'malimg', 0.2)
 annotation_file_train_test(r'malimg', 0.1)
 
 

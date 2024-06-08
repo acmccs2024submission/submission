@@ -39,7 +39,6 @@ if __name__ == "__main__":
     precision = precision_score(y_test, y_predict, average='weighted', zero_division=0)
     recall = recall_score(y_test, y_predict, average='weighted', zero_division=0)
     f1 = f1_score(y_test, y_predict, average='weighted', zero_division=0)
-    #print(accuracy)
     print("precison", precision)
     print("recall",recall)
     print("f1", f1)
