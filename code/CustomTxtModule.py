@@ -24,7 +24,6 @@ class CustomTxtModule:
       else:
           # Converting the NumPy array to a PyTorch tensor
           sample_probability = torch.tensor(array_weights, dtype=torch.float32).reshape(-1)
-          #print(sample_probability[:10])
           # Create DataLoader with WeightedRandomSampler for training
           train_sampler = WeightedRandomSampler(sample_probability / sample_probability.sum(),
                                                 len(sample_probability))
@@ -41,16 +40,3 @@ class CustomTxtModule:
        return self.test_loader
 
 
-"""
-new_height = 512
-new_width = 472
-batch_size = 32
-transforms = transforms.Compose([
-        transforms.Resize((new_height, new_width)),
-        transforms.ToTensor()])
-p1 = CustomDataModule(batch_size, transforms)
-
-print(p1.get_train_loader())
-print(p1.get_test_loader())
-
-"""
