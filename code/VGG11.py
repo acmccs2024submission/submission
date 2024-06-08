@@ -3,7 +3,7 @@ import torch.nn as nn
 from Trainer import *
 import time
 class VGG_11(nn.Module):
-    def __init__(self, arch, lr=0.1, num_classes=42):
+    def __init__(self, arch, num_classes=42):
         super().__init__()
         conv_blks=[]
         for (num_convs, out_channels) in arch:
@@ -40,16 +40,13 @@ class VGG_11(nn.Module):
         """Defined in :numref:`sec_linear_concise`"""
         return self.net(X)
 
-#num_classes = 42
-#model = VGG_11(arch=((1, 64), (1, 128), (2, 256), (2, 512), (2, 512)), num_classes=num_classes).layer_summary((1, 3, 1024, 72))
 
 if __name__ == "__main__":
     # Example usage:
     # Define your model, dataloaders, criterion, optimizer, and device
-    num_classes = 25
+    num_classes = 42
     model = VGG_11(arch=((1, 64), (1, 128), (2, 256), (2, 512), (2, 512)), num_classes=num_classes)
-    #new_height = 72
-    #new_width = 1024
+
     new_height = 128
     new_width = 512
     learning_rate = 0.01
@@ -73,7 +70,7 @@ if __name__ == "__main__":
     # Instantiate the Trainer class
     trainer = Trainer(model, train_loader, test_loader, cost, optimizer, device)
     # Train the model for a specified number of epochs
-    trainer.train(num_epochs=1)
+    trainer.train(num_epochs=100)
     start = time.time()
     # Evaluate the model on the test set
     test_accuracy = trainer.test()
