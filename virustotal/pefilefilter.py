@@ -141,15 +141,12 @@ def VirusTotalDataset(src_dataset_path, to_virusltoal_path=None, dataset_name=No
 
 
 
-data_dir =r"C:/Users/defaultuser0.DESKTOP-931HL80/Downloads/VirusShare_00300/"
-dataset_name = r'VirusShare_00300'
-out_datainfo_path = r'C:/Users/defaultuser0.DESKTOP-931HL80/Desktop/Montana State University/Research/11-12-2023/dataset_information.txt'
-#if(createDataset(data_dir=data_dir, dataset_name=dataset_name, out_datainfo_path=out_datainfo_path)):
-#    print("dataset created")
+data_dir =r""
+dataset_name = r''
+out_datainfo_path = r''
 
-src_dataset_path = r'C:/Users/defaultuser0.DESKTOP-931HL80/Desktop/Montana State University/Research/11-12-2023/Dataset/PE64_Dataset/'
-to_virusltoal_path = r'C:/Users/defaultuser0.DESKTOP-931HL80/Desktop/Montana State University/Research/11-12-2023/VirusTotal64/'
-dataset_name = r'virustotal'
-size_of_dataset = 500
+src_dataset_path = r''
+to_virusltoal_path = r''
+dataset_name = r''
 VirusTotalDataset(src_dataset_path, to_virusltoal_path=to_virusltoal_path, dataset_name=dataset_name, size_of_dataset=500)
 
