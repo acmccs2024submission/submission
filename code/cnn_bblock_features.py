@@ -60,9 +60,6 @@ def getInfo(filepath):
                 block = project.factory.block(block_addr)
                 opcodes_in_block = []
                 for ins in block.capstone.insns:
-                    #print(f"      Instruction {hex(ins.address)}: {len(ins.bytes)} bytes")
-                    #print("------------------------------------")
-                    #print(ins.mnemonic)
                     opcodes_in_block.append(ins.mnemonic)
                 bb_string=''.join(opcodes_in_block)
                 hash_bb = simhash256(bb_string)
@@ -85,7 +82,6 @@ def getInfo(filepath):
 #function to iterate every malware sample
 def iter_samples(srcdir, outdir):
     '''
-
 
     :param dataset_dir:
     :return:
@@ -117,9 +113,6 @@ def iter_samples(srcdir, outdir):
     print("Execution time per malware:", execution_time, "seconds")
 
 
-
-
-
 def simhash256(data):
     # Compute the SHA-256 hash of the input data
     hash_obj = hashlib.sha256(data.encode('utf-8'))
@@ -132,32 +125,5 @@ def convert_to_0255(bit_string):
     # Convert each bit to 0 if it is 0, otherwise convert to 255
     return [0 if bit == '0' else 255 for bit in bit_string]
 
-'''
-# Example usage
-basic_block = "Example basic block"
-hash_bin = simhash256(basic_block)
-result = convert_to_0255(hash_bin)
+iter_samples(r'../dataset', r'./cnn_bblock')
 
-print(f"SimHash256: {hash_bin},{len(hash_bin)}")
-print(f"Converted: {result}")
-'''
-'''
-# Example usage:
-shreds = ["section of code 1", "section of code 2", "section of code 3"]
-x = 22  # Choose the accuracy factor (number of bits to consider from MD5 hash)
-feature_hash = create_feature_hash(shreds, x)
-print("Feature hash:", feature_hash)
-'''
-'''
-# Example usage:
-feature_hash1 = [1, 0, 1, 0, 1]
-feature_hash2 = [0, 1, 1, 0, 1]
-jaccard = jaccard_index(feature_hash1, feature_hash2)
-print("Jaccard Index:", jaccard)
-'''
-
-#image_matrix = getInfo("./WindowsFilteredByAngr/generic_worm/VirusShare_1ef41afddd67ed9236a96abced727fa6")
-#print(np.array(image_matrix).shape)
-iter_samples(r'C:\Users\defaultuser0.DESKTOP-931HL80\Desktop\Montana_State_University\2024-summer\revise_paper\partial_samples', r'./WindowsMalware')
-
-#getInfo_re(r'C:\Users\defaultuser0.DESKTOP-931HL80\Desktop\Montana_State_University\2024-summer\revise_paper\partial_samples\pua_softpulse\VirusShare_0c6a45d7f0ae4a607e07b6a7d7a99c86')
