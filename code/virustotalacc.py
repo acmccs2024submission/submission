@@ -45,11 +45,8 @@ def create_dictionary(directory):
     for root, dirs, files in os.walk(directory):
         # Iterate over each file in the current directory
         for file in files:
-            # Get the full path of the file
-            file_path = os.path.join(root, file)
             # Get the name of the parent subfolder
             parent_folder = os.path.basename(root)
-            #print(parent_folder)
             # Add the filename and its corresponding subfolder name to the dictionary
             if parent_folder.split('_')[0] in common_type:
                 file_dict[file.split('.')[0]] = parent_folder.split('_')[1]
@@ -77,12 +74,8 @@ def create_virustotal_dict():
 def count_substring_occurrences(substring, string_list):
     # Initialize a counter to store the number of occurrences
     count = 0
-    #print(substring)
-    #print('----------------------------------------------------')
     # Iterate over each string in the list
-    #print(string_list)
     for string in string_list:
-        #print(string)
         # Check if the substring is present in the string
         if string:
             if substring in string:
@@ -133,7 +126,5 @@ def classinfo():
     print(np.mean(trojan_l))
     print(np.mean(pua_l))
 
-
-#create_dictionary(r'ase_dataset')
 classinfo()
 
